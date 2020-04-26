@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">mobile0424</string>
+    <string name="bottom_news">新闻</string>
+    <string name="bottom_people">民生</string>
+    <string name="bottom_recharge">缴费</string>
+    <string name="bottom_recommend">推荐</string>
+</resources>

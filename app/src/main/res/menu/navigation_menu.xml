@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_news"
+        android:icon="@mipmap/bottom_newspaper_on"
+        android:title="@string/bottom_news"/>
+    <item
+        android:id="@+id/bottom_people"
+        android:icon="@mipmap/bottom_people_on"
+        android:title="@string/bottom_people"/>
+    <item
+        android:id="@+id/bottom_recharge"
+        android:icon="@mipmap/bottom_recharge_on"
+        android:title="@string/bottom_recharge"/>
+    <item
+        android:id="@+id/bottom_recommend"
+        android:icon="@mipmap/bottom_recommend_on"
+        android:title="@string/bottom_recommend"/>
+</menu>
