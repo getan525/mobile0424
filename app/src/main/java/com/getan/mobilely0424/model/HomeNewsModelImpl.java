@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.getan.mobilely0424.model.bean.HomeBean;
 import com.getan.mobilely0424.net.RetrofitManager;
+import com.orhanobut.logger.Logger;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -22,7 +23,7 @@ public class HomeNewsModelImpl implements IModel{
     @Override
     public void getHomeNews_m(HomeCallback callback) {
         Log.d(TAG, "getHomeNews_m: 走网络请求的方法了");
-        RetrofitManager.mApiService().getHomeNewsCate()
+        RetrofitManager.getApiService().getHomeNewsCate()
                 .subscribeOn(Schedulers.io())//在io线程加载数据
                 .observeOn(AndroidSchedulers.mainThread())//在主线程显示数据
                 .subscribe(new Observer<HomeBean>() {
@@ -34,6 +35,7 @@ public class HomeNewsModelImpl implements IModel{
                     @Override
                     public void onNext(HomeBean homeBean) {
                         Log.d(TAG, homeBean.getData().getCate_list().get(1).getCateName()+"onNext: 成功了");
+                        Logger.d("");
                         //callback.setData(homeBean.getData().getCate_list().get(1).getCateName());
                         callback.setData(homeBean);
                     }

@@ -5,6 +5,7 @@ import android.util.Log;
 import com.getan.mobilely0424.model.HomeNewsModelImpl;
 import com.getan.mobilely0424.model.IModel;
 import com.getan.mobilely0424.view.IHomeView;
+import com.orhanobut.logger.Logger;
 
 import static android.content.ContentValues.TAG;
 
@@ -71,6 +72,7 @@ public class HomePresenterImpl<V extends IHomeView,M extends IModel> implements 
             mIModel.getHomeNews_m(new IModel.HomeCallback() {
                 @Override
                 public void setData(Object data) {
+                    Logger.d("mIHomeView"+mIHomeView);
                     mIHomeView.showSuccess();
                 }
 

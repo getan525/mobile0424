@@ -1,8 +1,13 @@
 package com.getan.mobilely0424.net;
 
 import com.getan.mobilely0424.utils.Constants;
+import com.orhanobut.logger.Logger;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -12,12 +17,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 邮箱：405181076@qq.com
  */
 public class RetrofitManager {
-    private static final long TIME_OUT = 10 ;
+    private static final long TIME_OUT = 10;
     private static final long DEFAULT_DIR_CACHE = 1;
     private static Retrofit mRetrofit;
     private static OkHttpClient httpClient;
 
-    public static ApiService mApiService(){
+    private static OkHttpClient mOkHttpClient;
+
+    public static ApiService getApiService() {
         //设置缓存路径
         //File cacheFile = new File(BaseApplication.getInstance().getCacheDir(), "cacheData");
         //设置缓存大小
@@ -37,14 +44,35 @@ public class RetrofitManager {
                 .baseUrl(Constants.URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                //.client(client)
+                .client(getHttpClient())
                 .build();
 
         return mRetrofit.create(ApiService.class);
+
     }
 
 
+    private static OkHttpClient getHttpClient() {
+        if (mOkHttpClient == null) {
+            mOkHttpClient = new OkHttpClient.Builder()
+                    .readTimeout(TIME_OUT, TimeUnit.SECONDS)
+                    .writeTimeout(TIME_OUT,TimeUnit.SECONDS)
+                    .connectTimeout(TIME_OUT,TimeUnit.SECONDS)
+                    .addInterceptor(getInterceptor())
+                    .build();
+        }
+        return mOkHttpClient;
+    }
 
+    private static Interceptor getInterceptor() {
+        new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                Logger.json(message);
+            }
+        });
+        return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+    }
 
 
 
@@ -69,7 +97,6 @@ public class RetrofitManager {
             .addConverterFactory(GsonConverterFactory.create(new Gson()))//解析数据
             .build();
     server = retrofit.create(ApiServer.class);*/
-
 
 
     /**
