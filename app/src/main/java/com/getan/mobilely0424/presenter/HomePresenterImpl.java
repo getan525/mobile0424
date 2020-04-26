@@ -26,6 +26,7 @@ public class HomePresenterImpl<V extends IHomeView,M extends IModel> implements 
     public void attachView(IHomeView view) {
         //this.mViewRef = new WeakReference(view);
         this.mIHomeView = view;
+
     }
 
 /*    @Override
@@ -80,7 +81,7 @@ public class HomePresenterImpl<V extends IHomeView,M extends IModel> implements 
 
                 @Override
                 public void onSuccess() {
-
+                    mIHomeView.showSuccess();
                 }
             });
         //}
