@@ -7,5 +7,5 @@ import com.getan.mobilely0424.base.IBaseView;
  * 邮箱：405181076@qq.com
  */
 public interface IHomeView extends IBaseView {
-
+    void showCate(Object data);
 }

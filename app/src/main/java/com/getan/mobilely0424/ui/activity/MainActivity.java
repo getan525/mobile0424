@@ -42,7 +42,7 @@ public class MainActivity extends BaseMvpActivity<IHomePresenter> implements IHo
         initListener();
         mFm = getSupportFragmentManager();
         switchFragment(0);
-        getPresenter().getHomeNews_p();
+        //getPresenter().getHomeNews_p();
     }
 
     @Override
@@ -123,4 +123,9 @@ public class MainActivity extends BaseMvpActivity<IHomePresenter> implements IHo
 
     }
 
+    @Override
+    public void showCate(Object data) {
+        //HomeBean.DataBean.CateListBean listBean = (HomeBean.DataBean.CateListBean) data;
+        //listBean.get
+    }
 }

@@ -15,4 +15,23 @@ public class RecommendFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void showError(String s) {
+
+    }
+
+    @Override
+    public void showDialog() {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void showSuccess() {
+
+    }
 }

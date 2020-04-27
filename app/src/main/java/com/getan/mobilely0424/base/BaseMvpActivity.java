@@ -19,6 +19,10 @@ public abstract class BaseMvpActivity<P extends IBasePresenter> extends AppCompa
         setContentView(initLayoutRes());
         ButterKnife.bind(this);
         mP = initPresenter();
+        if (mP!=null){
+
+            mP.attachView(this);
+        }
         initView();
         initData();
     }
@@ -37,4 +41,11 @@ public abstract class BaseMvpActivity<P extends IBasePresenter> extends AppCompa
 
     protected abstract P initPresenter();
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mP!=null){
+            mP.detach();
+        }
+    }
 }

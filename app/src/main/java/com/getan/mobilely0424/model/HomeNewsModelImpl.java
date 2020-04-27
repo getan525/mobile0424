@@ -34,9 +34,11 @@ public class HomeNewsModelImpl implements IModel{
 
                     @Override
                     public void onNext(HomeBean homeBean) {
-                        Log.d(TAG, homeBean.getData().getCate_list().get(1).getCateName()+"onNext: 成功了");
-                        Logger.d("");
+                        //Log.d(TAG, homeBean.getData().getCate_list().get(1).getCateName()+"onNext: 成功了");
+                        //Logger.d("");
                         //callback.setData(homeBean.getData().getCate_list().get(1).getCateName());
+                        //callback.setData(homeBean.getData().getCate_list());
+                        Logger.d("HomeNewsModelImpl方法里的onNext,准备好把数据给回调了");
                         callback.setData(homeBean);
                     }
 
