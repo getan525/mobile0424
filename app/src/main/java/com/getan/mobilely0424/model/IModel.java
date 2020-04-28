@@ -11,7 +11,7 @@ public interface IModel {
     public interface HomeCallback<T>{
         void setData(T data);
         void onError(String e);
-        void onSuccess();
+        void onRequestComplete();
     };
 
     void getHomeNews_m(HomeCallback callback);

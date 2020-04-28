@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_actionbar"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimaryDark">
+        <TextView
+            android:id="@+id/tv_left"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="爆料"/>
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_margin="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@mipmap/channel_glide_press"/>
+
+        <EditText
+            android:id="@+id/et_serch"
+            android:layout_centerVertical="true"
+            android:layout_margin="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_left"
+            android:layout_toLeftOf="@id/iv_right"
+            android:hint="你搜个试试"
+            android:textSize="12sp"
+            android:paddingLeft="5dp"
+            android:background="@drawable/shape_edit"/>
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/fl_fragment_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

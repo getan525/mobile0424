@@ -39,17 +39,22 @@ public class HomeNewsModelImpl implements IModel{
                         //callback.setData(homeBean.getData().getCate_list().get(1).getCateName());
                         //callback.setData(homeBean.getData().getCate_list());
                         Logger.d("HomeNewsModelImpl方法里的onNext,准备好把数据给回调了");
-                        callback.setData(homeBean);
+                        if (callback!=null){
+
+                            callback.setData(homeBean);
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         callback.onError(e.toString());
+                        Logger.d("HomeNewsModelImpl方法里的onError,网络请求走了error");
                     }
 
                     @Override
                     public void onComplete() {
-                        callback.onSuccess();
+                        //callback.onRequestComplete();
+                        Logger.d("HomeNewsModelImpl方法里的onComplete,网络请求走了onComplete");
                     }
                 });
 

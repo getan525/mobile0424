@@ -60,7 +60,7 @@ public class HomePresenterImpl implements IHomePresenter {
                 }
 
                 @Override
-                public void onSuccess() {
+                public void onRequestComplete() {
                     mIHomeView.showSuccess();
                 }
             });

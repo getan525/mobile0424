@@ -1,5 +1,9 @@
 package com.getan.mobilely0424.ui.fragment;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.getan.mobilely0424.R;
 import com.getan.mobilely0424.base.BaseFragment;
 
@@ -14,7 +18,15 @@ public class RechargeFragment extends BaseFragment {
         return R.layout.fragment_recharge;
     }
 
-
+    @Override
+    protected View initDefaultView(LayoutInflater inflater, ViewGroup container) {
+        return inflater.inflate(R.layout.fragment_state_default,container,false);
+    }
+    @Override
+    protected void initView(View rootView) {
+        super.initView(rootView);
+        changeViewByState(State.SUCCESS);
+    }
     @Override
     public void showError(String s) {
 
