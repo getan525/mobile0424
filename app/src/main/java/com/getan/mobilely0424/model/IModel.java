@@ -7,6 +7,7 @@ package com.getan.mobilely0424.model;
 public interface IModel {
 
 
+    void getLoadMore_m(String url_loadmore, HomeCallback callback);
 
     public interface HomeCallback<T>{
         void setData(T data);
@@ -15,4 +16,5 @@ public interface IModel {
     };
 
     void getHomeNews_m(HomeCallback callback);
+    void getPagerNewsList_m(String s, HomeCallback callback);
 }

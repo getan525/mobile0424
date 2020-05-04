@@ -1,18 +1,30 @@
 package com.getan.mobilely0424.net;
 
 
+import com.getan.mobilely0424.model.bean.CateNewsListBean;
 import com.getan.mobilely0424.model.bean.HomeBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Url;
 
 /**
  * Created by Administrator on 2020/4/25.
  * 邮箱：405181076@qq.com
  */
 public interface ApiService {
+    //获取home页分类名
     @GET("tools/service/getNewsCate")
     Observable<HomeBean> getHomeNewsCate();
+
+    //获取各分类下的新闻列表
+    //@GET("tools/service/getNewsList/{cate}/{curpage}/{default}/{pagesize}")
+    @GET()
+    Observable<CateNewsListBean> getCateList(@Url String url);
+
+    @GET()
+    Observable<CateNewsListBean> getMore(@Url String url);
+
 }
 /*
     @GET(ApiConstants.QQ_SPORT_API)

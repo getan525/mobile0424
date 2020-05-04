@@ -2,6 +2,7 @@ package com.getan.mobilely0424.model;
 
 import android.util.Log;
 
+import com.getan.mobilely0424.model.bean.CateNewsListBean;
 import com.getan.mobilely0424.model.bean.HomeBean;
 import com.getan.mobilely0424.net.RetrofitManager;
 import com.orhanobut.logger.Logger;
@@ -19,6 +20,35 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
  */
 public class HomeNewsModelImpl implements IModel{
     //private HomeCallback mHomeCallback;
+
+    @Override
+    public void getLoadMore_m(String url_loadmore, HomeCallback callback) {
+        RetrofitManager.getApiService().getMore(url_loadmore)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CateNewsListBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(CateNewsListBean cateNewsListBean) {
+                        callback.setData(cateNewsListBean);
+                        callback.onRequestComplete();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 
     @Override
     public void getHomeNews_m(HomeCallback callback) {
@@ -58,6 +88,35 @@ public class HomeNewsModelImpl implements IModel{
                     }
                 });
 
+    }
+
+    @Override
+    public void getPagerNewsList_m(String url, HomeCallback callback) {
+        RetrofitManager.getApiService().getCateList(url)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CateNewsListBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(CateNewsListBean cateListBean) {
+                        Logger.d("请求分类的列表成功了"+cateListBean.getData().toString());
+                        callback.setData(cateListBean);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callback.onError(e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }
 

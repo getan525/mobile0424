@@ -12,6 +12,12 @@ public class Constants {
      * @description 该类主要是存放一些URL地址
      */
 
+
+    public static final String KEY_HOMEPAGER_CATE_NAME = "cateName";
+    public static final String KEY_HOMEPAGER_CATE_ID = "cateId";
+    public static final String KEY_HOMEPAGER_CATE = "cate";
+
+
         public static final String URL = "http://shouji.lyd.com.cn/";
         // public static final String URL = "http://zsly.lyd.com.cn/";
         /** 日报首页接口 */
@@ -187,6 +193,7 @@ public class Constants {
         /** 消息列表 */
         public static final String MESSURL = URL + "tools/user/getUserMsgList";
         public static final String DELMESS = URL + "tools/msg/delUserMsg";
+
 
     public static String deviceId="";
 }

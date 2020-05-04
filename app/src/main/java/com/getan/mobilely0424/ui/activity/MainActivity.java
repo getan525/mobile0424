@@ -6,7 +6,7 @@ import android.widget.FrameLayout;
 
 import com.getan.mobilely0424.R;
 import com.getan.mobilely0424.base.BaseMvpActivity;
-import com.getan.mobilely0424.presenter.HomePresenterImpl;
+import com.getan.mobilely0424.presenter.impl.HomePresenterImpl;
 import com.getan.mobilely0424.presenter.IHomePresenter;
 import com.getan.mobilely0424.ui.fragment.HomeFragment;
 import com.getan.mobilely0424.ui.fragment.PeopleFragment;

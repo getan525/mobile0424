@@ -1,9 +1,10 @@
-package com.getan.mobilely0424.presenter;
+package com.getan.mobilely0424.presenter.impl;
 
 import android.util.Log;
 
 import com.getan.mobilely0424.model.HomeNewsModelImpl;
 import com.getan.mobilely0424.model.IModel;
+import com.getan.mobilely0424.presenter.IHomePresenter;
 import com.getan.mobilely0424.view.IHomeView;
 import com.orhanobut.logger.Logger;
 

@@ -35,20 +35,22 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        HomePagerFragment pagerFragment = new HomePagerFragment();
+        HomeBean.DataBean.CateListBean listBean = cateList.get(position);
+        HomePagerFragment pagerFragment = HomePagerFragment.newInstance(listBean);
         return pagerFragment;
     }
 
     @Override
     public int getCount() {
+        //Logger.d("homepageradapter+getCount>>>>>>="+cateList.size());
         return cateList.size();
     }
 
     public void setCateList(HomeBean.DataBean listBean) {
         //List<HomeBean.DataBean.CateListBean> data = listBean.getCate_list();
         //this.cateList.addAll(data);
-        Logger.d("homepageradapter+="+cateList.size());
         List<HomeBean.DataBean.CateListBean> cate_list = listBean.getCate_list();
+        Logger.d("homepageradapter+setCateList>>>>>>="+cate_list.size());
         cateList.addAll(cate_list);
         notifyDataSetChanged();
     }

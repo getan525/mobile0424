@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import com.getan.mobilely0424.R;
 import com.getan.mobilely0424.base.BaseFragment;
 import com.getan.mobilely0424.model.bean.HomeBean;
-import com.getan.mobilely0424.presenter.HomePresenterImpl;
+import com.getan.mobilely0424.presenter.impl.HomePresenterImpl;
 import com.getan.mobilely0424.presenter.IHomePresenter;
 import com.getan.mobilely0424.ui.adapter.HomePagerAdapter;
 import com.getan.mobilely0424.view.IHomeView;
@@ -31,6 +31,7 @@ public class HomeFragment extends BaseFragment<IHomePresenter> implements IHomeV
     LinearLayout mLinearLayout_fail;
     private HomePagerAdapter mHomePagerAdapter;
     private IHomePresenter mHomePresenter;
+    private HomeBean mHomeBean =null;
 
     @Override
     protected IHomePresenter initPresenter() {
@@ -47,6 +48,10 @@ public class HomeFragment extends BaseFragment<IHomePresenter> implements IHomeV
     protected void initView(View rootView) {
         super.initView(rootView);
         changeViewByState(State.SUCCESS);
+
+
+
+
     }
 
     @Override
@@ -64,19 +69,19 @@ public class HomeFragment extends BaseFragment<IHomePresenter> implements IHomeV
     @Override
     public void showCate(Object data) {
         //HomeBean.DataBean.CateListBean listBean = (HomeBean.DataBean.CateListBean) data;
-        HomeBean homeBean= (HomeBean) data;
+        mHomeBean = (HomeBean) data;
 
-        if (((HomeBean) data).getData().getCate_list().size()==0||data==null){
+        if (mHomeBean.getData().getCate_list().size()==0||mHomeBean==null){
             changeViewByState(State.EMPTY);
         }else {
             changeViewByState(State.SUCCESS);
         }
-
         mHomePagerAdapter = new HomePagerAdapter(getChildFragmentManager());
-        mHomePagerAdapter.setCateList(homeBean.getData());
+        mHomePagerAdapter.setCateList(mHomeBean.getData());
         Logger.d("HomeFragment里的showcate");
         mViewPager.setAdapter(mHomePagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
+
     }
 
     @Override
